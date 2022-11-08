@@ -57,3 +57,11 @@
         });
 
 - Para exibir no html variáveis vindas do backend, usa-se no html uma tag especial, que contem a variável desejada
+
+        <p><b>Nome:</b> <%= nome %></p>
+
+        <p><b>Linguagem preferida:</b> <%= lang %></p>
+
+        <p><b>Empresa:</b> <%= empresa %></p>
+
+        <p><b>Total de colaboradores:</b> <%= colaboradores %></p>
