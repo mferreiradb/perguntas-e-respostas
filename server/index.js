@@ -4,8 +4,15 @@ const app = express();
 // Configura o EJS como view engine
 app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => {
-	res.render('index');
+app.get('/:nome?/:lang?', (req, res) => {
+	let nome = req.params.nome;
+	let lang = req.params.lang;
+	res.render('index', {
+		nome: nome,
+		lang: lang,
+		empresa: 'TicBox Sistemas',
+		colaboradores: 12
+	});
 });
 
 app.get('/home', (req, res) => {

@@ -14,6 +14,12 @@
 
         npm i ejs --save
 
+*EMBEDDED JAVASCRIPT (EJS)*
+
+- Template Engine
+- Desenha (renderiza) o HTML na tela
+- Permite inserção de código JS no HTML
+
 *Necessário configurar ejs para exibir o html*
 
 - Para configurar o ejs como template engine, basta inserir uma linha de código antes as rotas. Nesta linha, a variável app utiliza a função set, passando passando dois parâmetros, um é a declaração de definição da view engine e o segundo é qual será a biblioteca utilizada (nesse caso, ejs)
@@ -34,9 +40,20 @@
             res.render('main/Perfil');
         });
 
+*Exibir variáveis no HTML*
 
-*EMBEDDED JAVASCRIPT (EJS)*
+- Para exportar as variáveis do backend, passa-se na função render() um segundo parâmetro, que é um objeto, onde os valores das chaves serão as vaiáveis que serão utilizadas. Dessa forma, render() passa a ter dois parâmetros: o primeiro é o arquivo que será renderizado e o segundo são as variáveis que serão exportadas para o arquivo ter acesso
+- O objeto também pode ter dados definidos fora de variáveis
 
-- Template Engine
-- Desenha (renderiza) o HTML na tela
-- Permite inserção de código JS no HTML
+        app.get('/', (req, res) => {
+            let nome = 'Mauricio';
+            let lang = 'JavaScript';
+            res.render('index', {
+                nome: nome,
+                lang: lang,
+                empresa: 'TicBox Sistemas',
+                colaboradores: 12
+            });
+        });
+
+- Para exibir no html variáveis vindas do backend, usa-se no html uma tag especial, que contem a variável desejada
