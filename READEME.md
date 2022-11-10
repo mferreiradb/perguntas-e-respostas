@@ -44,6 +44,7 @@
 
 - Para exportar as variáveis do backend, passa-se na função render() um segundo parâmetro, que é um objeto, onde os valores das chaves serão as vaiáveis que serão utilizadas. Dessa forma, render() passa a ter dois parâmetros: o primeiro é o arquivo que será renderizado e o segundo são as variáveis que serão exportadas para o arquivo ter acesso
 - O objeto também pode ter dados definidos fora de variáveis
+- A variável será acessada utilizando a propriedade definida no objeto
 
         app.get('/', (req, res) => {
             let nome = 'Mauricio';
@@ -65,3 +66,12 @@
         <p><b>Empresa:</b> <%= empresa %></p>
 
         <p><b>Total de colaboradores:</b> <%= colaboradores %></p>
+
+*Expressões no HTML*
+
+- Usa-se uma tag especial, que contém a estrutura
+        - Estruturas condicionais
+                
+                <% if(msg){ %>
+                <h3>Mensagem de erro</h3>
+                <% } %>        

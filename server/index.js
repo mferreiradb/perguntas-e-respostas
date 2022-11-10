@@ -7,11 +7,13 @@ app.set('view engine', 'ejs');
 app.get('/:nome?/:lang?', (req, res) => {
 	let nome = req.params.nome;
 	let lang = req.params.lang;
+	let exibmsg = true;
 	res.render('index', {
 		nome: nome,
 		lang: lang,
 		empresa: 'TicBox Sistemas',
-		colaboradores: 12
+		colaboradores: 12,
+		msg: exibmsg
 	});
 });
 

@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guia Perguntas</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Guia Perguntas</h1>
-    <hr>
+    <hr />
     <h3>Lista de Perguntas</h3>
 
     <p><b>Nome:</b> <%= nome %></p>
-    
+
     <p><b>Linguagem preferida:</b> <%= lang %></p>
-    
+
     <p><b>Empresa:</b> <%= empresa %></p>
-    
+
     <p><b>Total de colaboradores:</b> <%= colaboradores %></p>
 
-</body>
+    <% if(msg){ %>
+    <h3>Mensagem de erro</h3>
+    <% } %>
+  </body>
 </html>
