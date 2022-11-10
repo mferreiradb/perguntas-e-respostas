@@ -122,3 +122,19 @@
                         </li></ul>
                         <% } %>
                 <% } %>
+
+*Arquivos Estátivos no Express (CSS, IMG, JS, etc.)*
+
+- Necessário apenas realziar a configuração, executando a função use, que tem como parâmetro express.static()
+- A função static tem como parâmetro o nome da pasta que irá conter os arquivos. Por padrão de projeto, normalmente colocamos o nome desta pasta como public
+
+                app.set('view engine', 'ejs');
+                app.use(express.static('./public'));
+
+- O link com css fica da seguinte forma:
+
+                <link rel="stylesheet" href="/css/style.css">
+
+- O link de imagens e demais arquivos seguem a mesma lógica do link de css
+
+                <img src="/img/back.jpg" alt="fundo" class="image">
