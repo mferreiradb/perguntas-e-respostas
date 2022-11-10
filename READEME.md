@@ -73,52 +73,52 @@
 
         - Estruturas condicionais
                 
-                        <% if(msg){ %>
-                        
-                        <% } %>
-                        
-                        <% if(msg){ %>
-                        <h3>Mensagem de erro</h3>
-                        <% } %>
+                <% if(msg){ %>
+                
+                <% } %>
+                
+                <% if(msg){ %>
+                <h3>Mensagem de erro</h3>
+                <% } %>
 
-                        <% if(msg){ %>
+                <% if(msg){ %>
 
-                        <% } else { %>
+                <% } else { %>
 
-                        <% } %>
+                <% } %>
 
-                        <% if(msg){ %>
-                        <h3>Mensagem de erro</h3>
-                        <% } else { %>
-                        <h3>Mensagem de aprovação</h3>
-                        <% } %>
+                <% if(msg){ %>
+                <h3>Mensagem de erro</h3>
+                <% } else { %>
+                <h3>Mensagem de aprovação</h3>
+                <% } %>
         
         - Estruturas de repetição
 
-                        <% produtos.forEach((produto) => { %>
+                <% produtos.forEach((produto) => { %>
 
-                        <% }) %>
-                        
-                        <% produtos.forEach((produto) => { %>
-                                <ul><li>
+                <% }) %>
+                
+                <% produtos.forEach((produto) => { %>
+                        <ul><li>
+                        <b>Produto:</b> <%=produto.nome%>
+                        <b>Preço:</b> <%=produto.valor%>
+                        </li></ul>
+                <% }) %>
+
+
+                <% for (let produto of produtos) { %>
+                        <ul><li>
+                        <b>Produto:</b> <%=produto.nome%>
+                        <b>Preço:</b> <%=produto.valor%>
+                        </li></ul>
+                <% } %>
+
+                <% for (produto of produtos) { %>
+                        <% if (produto.ativo == true) { %>
+                        <ul><li>
                                 <b>Produto:</b> <%=produto.nome%>
                                 <b>Preço:</b> <%=produto.valor%>
-                                </li></ul>
-                        <% }) %>
-
-
-                        <% for (let produto of produtos) { %>
-                                <ul><li>
-                                <b>Produto:</b> <%=produto.nome%>
-                                <b>Preço:</b> <%=produto.valor%>
-                                </li></ul>
+                        </li></ul>
                         <% } %>
-
-                        <% for (produto of produtos) { %>
-                                <% if (produto.ativo == true) { %>
-                                <ul><li>
-                                        <b>Produto:</b> <%=produto.nome%>
-                                        <b>Preço:</b> <%=produto.valor%>
-                                </li></ul>
-                                <% } %>
-                        <% } %>
+                <% } %>
