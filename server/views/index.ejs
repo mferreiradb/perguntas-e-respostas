@@ -19,8 +19,22 @@
 
     <p><b>Total de colaboradores:</b> <%= colaboradores %></p>
 
-    <% if(msg){ %>
-    <h3>Mensagem de erro</h3>
+    <% if(adm){ %>
+        <div><button>Menu Gerencial</button></div>
+        <div><button>Produtos</button></div>
+    <% } else { %>
+        <div><button>Produtos</button></div>
+    <% } %>
+
+    <% for (produto of produtos) { %>
+        <% if (produto.ativo == true) { %>
+            <ul><li>
+                <b>Produto:</b> <%=produto.nome%> <br>
+                <b>Preço:</b> <%=produto.valor%>
+            </li>
+            <hr>
+        </ul>
+        <% } %>
     <% } %>
   </body>
 </html>
