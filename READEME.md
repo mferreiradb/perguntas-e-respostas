@@ -139,7 +139,7 @@
 
                 <img src="/img/back.jpg" alt="fundo" class="image">
 
-*Bootstrap*
+*BOOTSTRAP*
 
 - Baixar no site e jogar os arquivos dentro  do projeto (versão 4.5 é usada neste projeto)
 - Importar o CSS e JS do bootstrap no html
