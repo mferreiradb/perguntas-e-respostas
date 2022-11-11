@@ -1,0 +1,21 @@
+.project-dark {
+    background-color: #020234;
+}
+
+.project-light {
+    background-color: #05057b;
+}
+
+#form-pergunta {
+    margin-top: 10vh;
+}
+
+.logo {
+    font-family: Roboto;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.849);
+}
+
+.bg-person {
+    background-color: #05057b;
+}

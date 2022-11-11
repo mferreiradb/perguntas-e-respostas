@@ -147,6 +147,7 @@
                 <link rel="stylesheet" href="/css/bootstrap.min.css">
 
 - Para a importação do JS são necessárias duas dependências
+- Os demais CSS, que não forem do bootstrap, devem ser colocados depois do CSS do bootstrap
 - Faz-se a importação das dependências e do arquivo JS do bootstrap
 - A ordem deve ser a exata a seguir
 
