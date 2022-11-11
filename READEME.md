@@ -138,3 +138,26 @@
 - O link de imagens e demais arquivos seguem a mesma lógica do link de css
 
                 <img src="/img/back.jpg" alt="fundo" class="image">
+
+*Bootstrap*
+
+- Baixar no site e jogar os arquivos dentro  do projeto (versão 4.5 é usada neste projeto)
+- Importar o CSS e JS do bootstrap no html
+
+                <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+- Para a importação do JS são necessárias duas dependências
+- Faz-se a importação das dependências e do arquivo JS do bootstrap
+- A ordem deve ser a exata a seguir
+
+                <script
+                src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+                crossorigin="anonymous"
+                ></script>
+                <script
+                src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+                integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+                crossorigin="anonymous"
+                ></script>
+                <script src="/js/bootstrap.min.js"></script>
