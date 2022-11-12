@@ -169,3 +169,15 @@
 - Usa-se a função include para chamar o arquivo do componente desejado, apontando a propriedade partials seguido do caminho e nome do arquivo
 
                 <%- include('partials/header.ejs') %>
+
+*ENVIOD E DADOS PARA O BACKEND*
+
+- Usando GET, os dados são enviados utilizando os query params (aparecem na url)
+- Usando POST, os dados são enviados utilizando os body params (não aparecem na url)
+
+- É necesspario configurar o express para receber os dados do front
+
+                // Configura o Express para receber os dados do front
+                app.use(express.urlencoded({ extended: false }));
+                // Permite a leitura de dados via JSON
+                app.use(express.json());

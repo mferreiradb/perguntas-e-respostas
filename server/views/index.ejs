@@ -1,10 +1,21 @@
 <%- include('partials/head.ejs') %>
 
-<body>
+<body class="project-dark">
   <%- include('partials/navbar.ejs') %>
-  <h1>Estilo do bootstrap</h1>
+ 
+  <div class="container">
 
-  <a href="/perguntar" class="btn btn-primary mt-2">Página de perguntas</a>
+    <div class="card" id="form-pergunta">
+        <div class="card-header text-center">
+            <h1 class="">Lista de perguntas</h1>
+        </div>
+        <div class="card-body">
+        </div>
+    </div>
+
+
+  <a href="/perguntar" class="btn btn-primary mt-2">Realizar pergunta</a>
+</div>
 </body>
 
 <%- include('partials/scripts.ejs') %>
