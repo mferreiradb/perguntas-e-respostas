@@ -162,3 +162,10 @@
                 crossorigin="anonymous"
                 ></script>
                 <script src="/js/bootstrap.min.js"></script>
+
+*REUTILIZANDO HTML COM PARTIALS*
+
+- Partes de layouts que podem ser reutilizadas em outras páginas (componentes)
+- Usa-se a função include para chamar o arquivo do componente desejado, apontando a propriedade partials seguido do caminho e nome do arquivo
+
+                <%- include('partials/header.ejs') %>
