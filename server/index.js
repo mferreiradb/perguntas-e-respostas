@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+const db = require('./models/db.js');
+
 // Configura o EJS como view engine
 app.set('view engine', 'ejs');
 app.use(express.static('./public'));
