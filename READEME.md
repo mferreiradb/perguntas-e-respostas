@@ -123,7 +123,7 @@
                         <% } %>
                 <% } %>
 
-*Arquivos Estátivos no Express (CSS, IMG, JS, etc.)*
+*Arquivos Estáticos no Express (CSS, IMG, JS, etc.)*
 
 - Necessário apenas realziar a configuração, executando a função use, que tem como parâmetro express.static()
 - A função static tem como parâmetro o nome da pasta que irá conter os arquivos. Por padrão de projeto, normalmente colocamos o nome desta pasta como public
@@ -181,3 +181,105 @@
                 app.use(express.urlencoded({ extended: false }));
                 // Permite a leitura de dados via JSON
                 app.use(express.json());
+
+**SEQUELIZE**
+
+- ORM (Object Relational Mapper - Mapeamento objeto-relacional)
+    - Sistema para abstração da camada de Banco de Dados. Remove a necessidade de digitação das queries
+- Framework que auxilia a trabalhar com banco de Dados a partir do node
+- Seguir a documentação em https://www.npmjs.com/package/sequelize
+
+    *npm i --save sequelize*
+
+- Necessária a instalação do módulo relativo ao Banco de Dados que será utilizado. Ver na documentação
+
+    *npm install --save mysql2*
+
+*Conectando com o banco de dados*
+
+        const Sequelize = require('sequelize')
+        const sequelize = new Sequelize('nome_banco', 'usuario', 'senha', {
+            host: 'nome_host',
+            dialect: 'banco_de_dados'
+        })
+        *EX*
+            const Sequelize = require('sequelize')
+            const sequelize = new Sequelize('test', 'root', 'root', {
+            host: 'localhost',
+            dialect: 'mysql'
+            })
+
+*Verificando se a conexão foi bem sucedida*
+
+- Basta adicionar ao fim do código:
+
+        sequelize.authenticate().then(function(){
+            console.log('Conectado')
+        }).catch(function(erro) {
+            console.log('Falha na conexão' + erro)
+        })
+        
+*then*
+
+- Funciona como uma funcção de callback. Neste caso para sequelize.authenticate(), de forma que caso a conexão seja estabelecida, será chamada.
+
+*catch*
+
+- Funciona como uma funcção de callback. Neste caso para sequelize.authenticate(), de forma que caso a conexão seja estabelecida, será chamada.
+
+- As funções funcionam como *if/else* que testa se a conexão foi estabelecida, onde *then* é *if* e *catch* é *else*
+    
+    - As funções *then* e *catch* fazem parte do paradgma **Programação Assincrona**
+    
+*Criando model*
+
+- Model é uma referência de uma tabela no Sequelize, podendo ser usado para manipular o Banco de Dados
+
+*Criar tabelas*
+
+- Cria-se uma variável, atribuindo a ela a variável sequelize, utilizando a função define(), passando como parâmetro o nome da tabela e seus campos com seus tipos, de acordo com o Sequelize
+
+        const Postagem = sequelize.define('postagens', {
+            titulo: {
+                type: Sequelize.STRING
+            },
+            conteudo: {
+                type: Sequelize.TEXT
+            }
+        })
+
+*STRING*
+
+    - Possui limite de caracteres
+    - Varchar (255)
+
+*TEXT*
+
+    - Não possui limite de caracteres
+    - Text
+
+*INTERGER*
+
+    - Int
+    
+- Para que o comando seja executado, usa-se a função *sync* ao chamar a variável criada, passando como parãmetro o objeto *force* com o valor *true*
+
+        const Postagem = sequelize.define('postagens', {
+        titulo: {
+            type: Sequelize.STRING
+        },
+        conteudo: {
+            type: Sequelize.TEXT
+        }
+        })
+
+        Postagem.sync({force: true})
+
+*Inserir dados nas tabelas*
+
+- Chama-se o model e usa-se a função *create*, passando como parâmetro, os campos com seus valores
+
+        Postagem.create({
+        titulo: 'Teste de Titulo',
+        conteudo: 'Teste de conteudo'
+        })
