@@ -170,7 +170,7 @@
 
                 <%- include('partials/header.ejs') %>
 
-*ENVIOD E DADOS PARA O BACKEND*
+*ENVIO DE DADOS PARA O BACKEND*
 
 - Usando GET, os dados são enviados utilizando os query params (aparecem na url)
 - Usando POST, os dados são enviados utilizando os body params (não aparecem na url)
