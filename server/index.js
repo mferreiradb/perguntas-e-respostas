@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 
+// eslint-disable-next-line no-unused-vars
 const db = require('./models/db.js');
 const perguntaModel = require('./models/Pergunta.js');
 
@@ -24,8 +25,16 @@ app.post('/insertPergunta', (req, res) => {
 	//const { titulo, pergunta} = req.body;
 	const titulo = req.body.titulo;
 	const pergunta = req.body.pergunta;
-	res.redirect('/');
-	console.log({titulo: titulo, pergunta: pergunta});
+
+	perguntaModel.create({
+		titulo: titulo,
+		descricao: pergunta
+	}).then(() => {
+		res.redirect('/');
+		console.log({titulo: titulo, pergunta: pergunta});
+	}).catch((err) => {
+		console.log(err);
+	});
 });
 
 app.listen(8080, () => {
