@@ -261,8 +261,12 @@
 *INTERGER*
 
     - Int
+
+*allowNull*
+
+        - Define se o campo será not null
     
-- Para que o comando seja executado, usa-se a função *sync* ao chamar a variável criada, passando como parãmetro o objeto *force* com o valor *true*
+- Para que o comando seja executado, usa-se a função *sync* ao chamar a variável criada, passando como parãmetro o objeto *force*, que determinará se o Sequelize irá forçar a criação da tabela mesmo que ela exista. Force recebe um valor booleano
 
         const Postagem = sequelize.define('postagens', {
         titulo: {

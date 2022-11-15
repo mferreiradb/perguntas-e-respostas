@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 
 const db = require('./models/db.js');
+const perguntaModel = require('./models/Pergunta.js');
 
 // Configura o EJS como view engine
 app.set('view engine', 'ejs');
