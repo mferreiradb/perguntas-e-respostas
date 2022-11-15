@@ -14,15 +14,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.get('/', (req, res) => {
-	res.render('index');
+	Pergunta.findAll({order: [['id','asc']]}).then((perguntas) => {
+		res.render('index', {perguntas: perguntas});
+	});
 });
 
 app.get('/perguntar', (req, res) => {
 	res.render('perguntar');
 });
 
-app.post('/insertPergunta', (req, res) => {
-	//const { titulo, pergunta} = req.body;
+app.post('/insertPergunta', (req, res) => {	
 	const titulo = req.body.titulo;
 	const pergunta = req.body.pergunta;
 
@@ -31,7 +32,6 @@ app.post('/insertPergunta', (req, res) => {
 		descricao: pergunta
 	}).then(() => {
 		res.redirect('/');
-		console.log({titulo: titulo, pergunta: pergunta});
 	}).catch((err) => {
 		console.log(err);
 	});
