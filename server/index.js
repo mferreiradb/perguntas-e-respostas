@@ -3,7 +3,7 @@ const app = express();
 
 // eslint-disable-next-line no-unused-vars
 const db = require('./models/db.js');
-const perguntaModel = require('./models/Pergunta.js');
+const Pergunta = require('./models/Pergunta.js');
 
 // Configura o EJS como view engine
 app.set('view engine', 'ejs');
@@ -26,7 +26,7 @@ app.post('/insertPergunta', (req, res) => {
 	const titulo = req.body.titulo;
 	const pergunta = req.body.pergunta;
 
-	perguntaModel.create({
+	Pergunta.create({
 		titulo: titulo,
 		descricao: pergunta
 	}).then(() => {
