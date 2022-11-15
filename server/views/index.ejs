@@ -8,14 +8,14 @@
     <div class="card" id="form-pergunta">
         <div class="card-header text-center">
             <h1 class="">Lista de perguntas</h1>
-            
-            <ul>
-              <li>
-                <%= perguntas.descricao %>
-              </li>
-            </ul>
         </div>
         <div class="card-body">
+          <%perguntas.forEach((pergunta) => {%>
+            <h2 class="titulo-lista"><%= pergunta.titulo %></h2>
+            <ul type="none">
+              <li class="item-lista"><%= pergunta.descricao %></li>
+            </ul>
+          <%})%>
         </div>
     </div>
 

@@ -287,3 +287,44 @@
         titulo: 'Teste de Titulo',
         conteudo: 'Teste de conteudo'
         })
+
+*Exibindo na tela dados do Banco de Dados*
+
+- Usa-se a função findAll atribuida à variável referente ao model da tabela que deseja exibir os dados
+                
+                app.get('/', function(req, res) {
+                Post.findAll()
+                res.render('Home')
+                })
+
+- Após isso, usa-se a função then atribuida a Post.findAll(), passando uma função que tem um parâmetro, e como valor, passa-se a função render atrubuida a res
+
+- Render recebe como valor o nome da página que será renderizada e um objeto que possui como propriedade e valor da propriedade o parâmetro passado na função em .then
+
+- Isto fornece para apágina indicada o acesso aos dados da tabela no banco de dados
+
+                app.get('/', function(req, res) {
+                Post.findAll().then(function(posts) {
+                res.render('Home', {posts: posts})
+                })
+                })
+
+- O conteúdo pode ser ordenado passando para a função findAll um objeto com o atributo order e que tem como valor um array englobado por colchetes, onde o primeiro valor será a coluna que será referenciada para ordenamento e o segundo valor será o tipo de oredem: ascendente ou descentente
+
+                app.get('/', function(req, res) {
+                Post.findAll({order: [['id', 'desc']]}).then(function(posts) {
+                res.render('Home', {posts: posts})
+                })
+                })
+
+- Podemos obrigar o sequelize a mostrar no console apenas os registros do banco, sem informações adicionais, utilizando a propriedade raw
+
+                app.get('/', function(req, res) {
+                Post.findAll({order: [['id', 'desc']], raw: true}).then(function(posts) {
+                res.render('Home', {posts: posts})
+                })
+                })
+
+*Exibindo as perguntas no EJS*
+
+- Percorre-se o array de dados do banco para que sejam exibidos

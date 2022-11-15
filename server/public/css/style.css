@@ -19,3 +19,16 @@
 .bg-person {
     background-color: #05057b;
 }
+
+.item-lista {
+    font-size: 18px;
+}
+
+.item-lista::before {
+    content: 'P: ';
+    font-weight: bold;
+}
+
+.titulo-lista {
+    font-size: 26px;
+}
