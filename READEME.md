@@ -328,3 +328,10 @@
 *Exibindo as perguntas no EJS*
 
 - Percorre-se o array de dados do banco para que sejam exibidos
+
+                <%perguntas.forEach((pergunta) => {%>
+                    <h2 class="titulo-lista"><%= pergunta.titulo %></h2>
+                    <ul type="none">
+                    <li class="item-lista"><%= pergunta.descricao %></li>
+                    </ul>
+                <%})%>
