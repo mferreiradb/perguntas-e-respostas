@@ -14,19 +14,21 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.get('/', (req, res) => {
-	Pergunta.findAll({order: [['id','desc']], raw: true}).then((perguntas) => {
-		res.render('index', {perguntas: perguntas});
+	Pergunta.findAll({ order: [['id', 'desc']], raw: true }).then((perguntas) => {
+		res.render('index', { perguntas: perguntas });
 	});
 });
 
 app.get('/pergunta/:id', (req, res) => {
 	let id = req.params.id;
-	Pergunta.findAll({ raw: true,
-		attributes: ['titulo', 'descricao'],
-		where: {id: id}
+	Pergunta.findOne({
+		where: { id: id }
 	}).then((id) => {
-		res.render('pergunta', {id: id});
-		console.log(id);
+		if (id != undefined) {
+			res.render('pergunta', { id: id });
+		} else {
+			res.redirect('/');
+		}
 	}).catch((err) => {
 		console.log(err);
 	});
@@ -36,7 +38,7 @@ app.get('/perguntar', (req, res) => {
 	res.render('perguntar');
 });
 
-app.post('/insertPergunta', (req, res) => {	
+app.post('/insertPergunta', (req, res) => {
 	const titulo = req.body.titulo;
 	const pergunta = req.body.pergunta;
 
