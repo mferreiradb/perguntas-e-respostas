@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.get('/', (req, res) => {
-	Pergunta.findAll({order: [['id','asc']], raw: true}).then((perguntas) => {
+	Pergunta.findAll({order: [['id','desc']], raw: true}).then((perguntas) => {
 		res.render('index', {perguntas: perguntas});
 	});
 });
@@ -35,6 +35,10 @@ app.post('/insertPergunta', (req, res) => {
 	}).catch((err) => {
 		console.log(err);
 	});
+});
+
+app.get('/pergunta/:id', (req, res) => {
+	res.render('pergunta');
 });
 
 app.listen(8080, () => {
