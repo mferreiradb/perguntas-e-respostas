@@ -4,6 +4,7 @@ const app = express();
 // eslint-disable-next-line no-unused-vars
 const db = require('./models/db.js');
 const Pergunta = require('./models/Pergunta.js');
+const Resposta = require('./models/Resposta.js');
 
 // Configura o EJS como view engine
 app.set('view engine', 'ejs');
