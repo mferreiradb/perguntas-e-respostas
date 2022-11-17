@@ -19,6 +19,19 @@ app.get('/', (req, res) => {
 	});
 });
 
+app.get('/pergunta/:id', (req, res) => {
+	let id = req.params.id;
+	Pergunta.findAll({ raw: true,
+		attributes: ['titulo', 'descricao'],
+		where: {id: id}
+	}).then((id) => {
+		res.render('pergunta', {id: id});
+		console.log(id);
+	}).catch((err) => {
+		console.log(err);
+	});
+});
+
 app.get('/perguntar', (req, res) => {
 	res.render('perguntar');
 });
@@ -35,10 +48,6 @@ app.post('/insertPergunta', (req, res) => {
 	}).catch((err) => {
 		console.log(err);
 	});
-});
-
-app.get('/pergunta/:id', (req, res) => {
-	res.render('pergunta');
 });
 
 app.listen(8080, () => {
