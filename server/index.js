@@ -21,12 +21,25 @@ app.get('/', (req, res) => {
 });
 
 app.get('/pergunta/:id', (req, res) => {
-	let id = req.params.id;
+	let idFront = req.params.id;
 	Pergunta.findOne({
-		where: { id: id }
-	}).then((id) => {
-		if (id != undefined) {
-			res.render('pergunta', { id: id });
+		where: { id: idFront }
+	}).then((result) => {
+		if (result != undefined) {
+			Resposta.findAll({
+				order: [['id', 'desc']],
+				raw: true,
+				where: { idPergunta: result.id }
+			}).then((respostas) => {
+
+				res.render(
+					'pergunta', {
+						perguntas: result,
+						respostas: respostas
+					}
+				);
+				console.log(respostas);
+			});
 		} else {
 			res.redirect('/');
 		}
@@ -48,6 +61,20 @@ app.post('/insertPergunta', (req, res) => {
 		descricao: pergunta
 	}).then(() => {
 		res.redirect('/');
+	}).catch((err) => {
+		console.log(err);
+	});
+});
+
+app.post('/insertResposta/:id?', (req, res) => {
+	const corpo = req.body.corpo;
+	const idPergunta = req.params.id;
+
+	Resposta.create({
+		idPergunta: idPergunta,
+		corpo: corpo
+	}).then(() => {
+		res.redirect(`/pergunta/${idPergunta}`);
 	}).catch((err) => {
 		console.log(err);
 	});

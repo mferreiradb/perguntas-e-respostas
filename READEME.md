@@ -335,3 +335,35 @@
                     <li class="item-lista"><%= pergunta.descricao %></li>
                     </ul>
                 <%})%>
+
+*Exibindo as respostas*
+
+- Necessário realizar a busca pelas respostas dentro da rota da pergunta, para que seja diponiblizada para o front
+
+                app.get('/pergunta/:id', (req, res) => {
+                    let idFront = req.params.id;
+                    Pergunta.findOne({
+                        where: { id: idFront }
+                    }).then((result) => {
+                        if (result != undefined) {
+
+                            Resposta.findAll({
+                                raw: true,
+                                where: { idPergunta: result.id }
+                            }).then((respostas) => {
+
+                                res.render(
+                                    'pergunta', {
+                                        perguntas: result,
+                                        respostas: respostas
+                                    }
+                                );
+                                console.log(respostas);
+                            });
+                        } else {
+                            res.redirect('/');
+                        }
+                    }).catch((err) => {
+                        console.log(err);
+                    });
+                });
